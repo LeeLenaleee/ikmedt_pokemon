@@ -8,24 +8,40 @@
   </head>
   <body>
     <a-scene>
+        <a-assets>
+            <img alt="background" id="sky" src="Images/sky.jpg" crossorigin="anonymous">
+        </a-assets>
+        <a-sky src="#sky"></a-sky>
       <a-camera>
-        <a-cursor color="black"></a-cursor>
-        </a-camera>
+        <a-cursor color="red"></a-cursor>
+      </a-camera>
+
+      <a-text id="SongTekst" value="Pokiemen Theme" color="white" rotation="-45 0 0" position="-0.8 -0.5 -3" ></a-text>
+
       <a-image id="js--image1"  position = "0 2 -3" src=""></a-image>
-        <a-text id="js--1--attack0" value="ERROR: Reload pokemons" color="green" position="-0.3 1.5 -3" ></a-text>
-        <a-text id="js--1--attack1" value="ERROR: Reload pokemons" color="green" position="-0.3 1.3 -3" ></a-text>
-        <a-text id="js--1--attack2" value="ERROR: Reload pokemons" color="green" position="-0.3 1.1 -3" ></a-text>
+        <a-text id="js--1--attack0" value="ERROR: Reload pokemons" color="white" position="-0.3 1.3 -3" ></a-text>
+        <a-text id="js--1--attack1" value="ERROR: Reload pokemons" color="white" position="-0.3 1.1 -3" ></a-text>
+        <a-text id="js--1--attack2" value="ERROR: Reload pokemons" color="white" position="-0.3 0.9 -3" ></a-text>
+        <a-text id="js--1--attack3" value="ERROR: Reload pokemons" color="white" position="-0.3 0.7 -3" ></a-text>
+        <a-text id="js--1--attack4" value="ERROR: Reload pokemons" color="white" position="-0.3 0.5 -3" ></a-text>
+        <a-text id="js--1--attack5" value="ERROR: Reload pokemons" color="white" position="-0.3 0.3 -3" ></a-text>
 
-      <a-image id="js--image2"  position = "2 2 -3" src=""></a-image>
-        <a-text id="js--2--attack0" value="ERROR: Reload pokemons" color="green" position="1.7 1.5 -3" ></a-text>
-        <a-text id="js--2--attack1" value="ERROR: Reload pokemons" color="green" position="1.7 1.3 -3" ></a-text>
-        <a-text id="js--2--attack2" value="ERROR: Reload pokemons" color="green" position="1.7 1.1 -3" ></a-text>
+      <a-image id="js--image2"  position = "2 2 -3" src="" rotation="0 -45 0"></a-image>
+        <a-text id="js--2--attack0" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 1.3 -3" ></a-text>
+        <a-text id="js--2--attack1" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 1.1 -3" ></a-text>
+        <a-text id="js--2--attack2" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 0.9 -3" ></a-text>
+        <a-text id="js--2--attack3" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 0.7 -3" ></a-text>
+        <a-text id="js--2--attack4" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 0.5 -3" ></a-text>
+        <a-text id="js--2--attack5" value="ERROR: Reload pokemons" rotation="0 -45 0" color="white" position="1.7 0.3 -3" ></a-text>
 
-      <a-image id="js--image3"  position = "-2 2 -3" src=""></a-image>
-        <a-text id="js--3--attack0" value="ERROR: Reload pokemons" color="green" position="-2.3 1.5 -3" ></a-text>
-        <a-text id="js--3--attack1" value="ERROR: Reload pokemons" color="green" position="-2.3 1.3 -3" ></a-text>
-        <a-text id="js--3--attack2" value="ERROR: Reload pokemons" color="green" position="-2.3 1.1 -3" ></a-text>
-      <a-sphere id="sphere" color = "green" position = "0 -2 -2" radius="1" > </a-sphere>
+      <a-image id="js--image3"  position = "-2 2 -3" rotation="0 45 0" src=""></a-image>
+        <a-text id="js--3--attack0" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 1.3 -3" ></a-text>
+        <a-text id="js--3--attack1" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 1.1 -3" ></a-text>
+        <a-text id="js--3--attack2" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 0.9 -3" ></a-text>
+        <a-text id="js--3--attack3" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 0.7 -3" ></a-text>
+        <a-text id="js--3--attack4" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 0.5 -3" ></a-text>
+        <a-text id="js--3--attack5" value="ERROR: Reload pokemons" color="white" rotation="0 45 0" position="-2.3 0.3 -3" ></a-text>
+      <a-sphere src="Images/pokeball.png" id="sphere" position = "0 -2 -2" radius="1" > </a-sphere>
     </a-scene>
   </body>
 </html>

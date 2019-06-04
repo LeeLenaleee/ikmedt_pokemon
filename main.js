@@ -5,11 +5,15 @@ let textArray0 = [];
 let textArray1 = [];
 let textArray2 = [];
 let sphere;
+const amountMoves = 6;
+let themeTekst;
+let playing = false;
+const themeSong = new Audio('Audio/pokemonThemeSong.mp3');
 
 function  $(elementId) {return document.getElementById(elementId);}
 
-function addToArray(array, element) {
-  for (let i = 0; i<3; i++) {
+function addToAttackArray(array, element) {
+  for (let i = 0; i<amountMoves; i++) {
     array.push($("js--"+element+"--attack"+i))
   }
 }
@@ -20,9 +24,11 @@ window.onload = () => {
   imageArray.push(document.getElementById('js--image2'));
   imageArray.push(document.getElementById('js--image3'));
 
-  addToArray(textArray0, '1');
-  addToArray(textArray1, '2');
-  addToArray(textArray2, '3');
+  themeTekst = $('SongTekst');
+
+  addToAttackArray(textArray0, '1');
+  addToAttackArray(textArray1, '2');
+  addToAttackArray(textArray2, '3');
 
   textArray.push(textArray0);
   textArray.push(textArray1);
@@ -45,30 +51,40 @@ window.onload = () => {
   // om voor de eerste keer al te zorgen dat er images in staan voer de makeApicalls 1 keer uit, dit had ook met de foreach gekund zodat het iets dyer was,
   // nog beter was als je de foreach ook in een apparte methode gezet had dan zodat het helemaal dry was. Ook was het voor overzichtelijk heid beter geweest als je dit gelijk gedaan had na het initialiseren van de
   // elementen inplaats van na de onmouseneter.
-  makeApiCall(imageArray[0]);
-  makeApiCall(imageArray[1]);
-  makeApiCall(imageArray[2]);
+  makeApiCall(imageArray[0], 0);
+  makeApiCall(imageArray[1], 1);
+  makeApiCall(imageArray[2], 2);
 
   imageArray.forEach( (element, index) => {
     element.onmouseenter = () => {
-      for (let i = 0; i<3; i++) {
-        setVissable(index);
-      }
+      setVissable(index);
     };
     element.onmouseleave = () => {
       setUnvisisble(index);
     };
   });
+
+  themeTekst.onmouseenter = () => {
+    themeSong.play();
+    console.log(themeSong.playState);
+    if (playing) {
+      themeSong.pause();
+      playing = false;
+    } else {
+      themeSong.play();
+      playing = true;
+    }
+  };
 };
 
 setVissable = (index) => {
-  for (let i = 0; i<3; i++) {
+  for (let i = 0; i<amountMoves; i++) {
     textArray[index][i].setAttribute('visible', 'true');
   }
 };
 
 setUnvisisble = (index) => {
-  for (let i = 0; i<3; i++) {
+  for (let i = 0; i<amountMoves; i++) {
     textArray[index][i].setAttribute('visible', 'false');
   }
 };
@@ -87,12 +103,17 @@ makeApiCall = (element, index) => {
       let r = JSON.parse(request.response);
 	  // src van de sprite zetten naar de data waardoor deze van plaatje veranderd
       element.setAttribute("src",r.sprites.front_default);
-      for (let i = 0; i<3; i++) {
-        if (r.abilities[i].ability.name === undefined) {
+      for (let i = 0; i<amountMoves; i++) {
+        if (r.moves[i].move.name === undefined) {
           textArray[index][i].setAttribute("Value", "Geen Ability");
         } else {
-          textArray[index][i].setAttribute("Value", r.abilities[i].ability.name);
+          textArray[index][i].setAttribute("Value", r.moves[i].move.name);
         }
+      }
+    }
+    else {
+      for (let i = 0; i<amountMoves; i++) {
+        textArray[index][i].setAttribute("Value", "No Ability Found")
       }
     }
   };
@@ -102,4 +123,3 @@ makeApiCall = (element, index) => {
   // de request daadwerkelijk zenden
   request.send();
 };
-
